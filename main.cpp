@@ -1,16 +1,36 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
-double price{0.021873};
-double amount{1};
-std::string product{"ETH/BTC"};
-std::string timestamp{"2020/03/17 17:01:24.884492"};
 enum class OrderBookType
 {
     bid,
     ask
 };
-OrderBookType orderType = OrderBookType::bid;
+
+class OrderBookEntry
+{
+public:
+    OrderBookEntry(double _price,
+                   double _amount,
+                   std::string _timestamp,
+                   std::string _product,
+                   OrderBookType _orderType)
+        : price(_price),
+          amount(_amount),
+          timestamp(_timestamp),
+          product(_product),
+          orderType(_orderType)
+
+    {
+    }
+
+    double price;
+    double amount;
+    std::string timestamp;
+    std::string product;
+    OrderBookType orderType;
+};
 
 void printMenu()
 {
@@ -103,12 +123,38 @@ void processUserOption(int userOption)
 
 int main()
 {
-    while (true)
-    {
-        printMenu();
-        int userOption = getUserOption();
-        processUserOption(userOption);
-    }
+    // while (true)
+    // {
+    //     printMenu();
+    //     int userOption = getUserOption();
+    //     processUserOption(userOption);
+    // }
 
-    return 0;
+    // std::vector<double> prices;
+    // std::vector<double> amounts;
+    // std::vector<std::string> products;
+    // std::vector<std::string> timestamps;
+    // std::vector<OrderBookType> orderTypes;
+
+    // prices.push_back(0.021873);
+    // amounts.push_back(1);
+    // products.push_back("ETH/BTC");
+    // timestamps.push_back("2020/03/17 17:01:24.884492");
+    // orderTypes.push_back(OrderBookType::bid);
+
+    // std::cout << "prices: " << prices[0] << std::endl;
+    // std::cout << "amounts: " << amounts[0] << std::endl;
+    // std::cout << "products: " << products[0] << std::endl;
+    // std::cout << "timestamps: " << timestamps[0] << std::endl;
+    // std::cout << "orderTypes: " << orderTypes[0] << std::endl;
+
+    // return 0;
+
+    OrderBookEntry order1{1000,
+                          1,
+                          "2020/03/17 17:01:24.884492",
+                          "ETH/BTC",
+                          OrderBookType::bid};
+
+    std::cout << "The price is " << order1.price << std::endl;
 }
