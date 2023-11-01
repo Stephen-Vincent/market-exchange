@@ -1,4 +1,16 @@
 #include <iostream>
+#include <string>
+
+double price{0.021873};
+double amount{1};
+std::string product{"ETH/BTC"};
+std::string timestamp{"2020/03/17 17:01:24.884492"};
+enum class OrderBookType
+{
+    bid,
+    ask
+};
+OrderBookType orderType = OrderBookType::bid;
 
 void printMenu()
 {
